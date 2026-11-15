@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusBite | Student Dashboard</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f5fc;
+            color: #24213a;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            width: 100%;
+            background: white;
+            padding: 18px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 2px 15px rgba(40, 25, 80, 0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 25px;
+            font-weight: bold;
+            color: #5135b8;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            background: #eee9ff;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #55516b;
+
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #5135b8;
+        }
+
+        .dashboard-button {
+            background: #5135b8;
+            color: white !important;
+
+            padding: 11px 18px;
+            border-radius: 12px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .dashboard {
+            width: 86%;
+            max-width: 1150px;
+
+            margin: 45px auto 70px;
+        }
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            background: linear-gradient(
+                135deg,
+                #5135b8,
+                #7257d4
+            );
+
+            color: white;
+
+            border-radius: 25px;
+
+            padding: 38px 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            overflow: hidden;
+
+            position: relative;
+
+            box-shadow:
+                0 15px 40px rgba(81, 53, 184, 0.20);
+        }
+
+        .welcome-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-text small {
+            font-size: 12px;
+            letter-spacing: 2px;
+
+            opacity: 0.8;
+        }
+
+        .welcome-text h1 {
+            font-size: 34px;
+            margin: 10px 0;
+        }
+
+        .welcome-text p {
+            color: #e9e5ff;
+
+            font-size: 14px;
+
+            max-width: 530px;
+
+            line-height: 1.6;
+        }
+
+        .welcome-food {
+            font-size: 100px;
+
+            position: relative;
+            z-index: 2;
+
+            transform: rotate(-5deg);
+        }
+
+        .circle-one,
+        .circle-two {
+            position: absolute;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.08);
+        }
+
+        .circle-one {
+            width: 230px;
+            height: 230px;
+
+            right: 100px;
+            top: -100px;
+        }
+
+        .circle-two {
+            width: 180px;
+            height: 180px;
+
+            right: -50px;
+            bottom: -80px;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin: 35px 0 18px;
+        }
+
+        .section-title h2 {
+            font-size: 21px;
+            color: #292440;
+        }
+
+        .section-title a {
+            text-decoration: none;
+
+            color: #5135b8;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+
+            padding: 23px;
+
+            border-radius: 19px;
+
+            box-shadow:
+                0 10px 30px rgba(50, 30, 100, 0.06);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 52px;
+            height: 52px;
+
+            border-radius: 15px;
+
+            background: #eee9ff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .stat-card h3 {
+            font-size: 24px;
+
+            color: #292440;
+
+            margin-bottom: 4px;
+        }
+
+        .stat-card p {
+            color: #898596;
+
+            font-size: 12px;
+        }
+
+        /* ================= TWO COLUMN ================= */
+
+        .dashboard-grid {
+            display: grid;
+
+            grid-template-columns: 1.5fr 1fr;
+
+            gap: 22px;
+
+            margin-top: 25px;
+        }
+
+        .panel {
+            background: white;
+
+            border-radius: 21px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(50, 30, 100, 0.06);
+        }
+
+        .panel-header {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+        .panel-header h2 {
+            font-size: 19px;
+
+            color: #292440;
+        }
+
+        .panel-header a {
+            color: #5135b8;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        /* ================= RECENT ORDER ================= */
+
+        .recent-order {
+            padding: 17px;
+
+            background: #f8f6fd;
+
+            border-radius: 15px;
+
+            margin-bottom: 14px;
+        }
+
+        .recent-top {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 14px;
+        }
+
+        .recent-top h3 {
+            font-size: 15px;
+
+            color: #302b46;
+        }
+
+        .recent-top span {
+            background: #fff3d9;
+
+            color: #b97800;
+
+            padding: 6px 10px;
+
+            border-radius: 15px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .recent-food {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .recent-food-icon {
+            width: 43px;
+            height: 43px;
+
+            background: #eee9ff;
+
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+        .recent-food p {
+            font-size: 12px;
+
+            color: #77738b;
+
+            line-height: 1.6;
+        }
+
+        .recent-total {
+            margin-left: auto;
+
+            font-weight: bold;
+
+            color: #5135b8;
+        }
+
+        /* ================= QUICK ACTIONS ================= */
+
+        .actions {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 13px;
+        }
+
+        .action {
+            text-decoration: none;
+
+            background: #f8f6fd;
+
+            border-radius: 15px;
+
+            padding: 20px 15px;
+
+            text-align: center;
+
+            transition: 0.3s;
+        }
+
+        .action:hover {
+            background: #eee9ff;
+
+            transform: translateY(-3px);
+        }
+
+        .action-icon {
+            font-size: 27px;
+
+            margin-bottom: 8px;
+        }
+
+        .action h3 {
+            font-size: 13px;
+
+            color: #302b46;
+
+            margin-bottom: 4px;
+        }
+
+        .action p {
+            font-size: 10px;
+
+            color: #898596;
+        }
+
+        /* ================= PROFILE ================= */
+
+        .profile-card {
+            margin-top: 22px;
+
+            background: white;
+
+            border-radius: 21px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(50, 30, 100, 0.06);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .profile-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 58px;
+            height: 58px;
+
+            background: #eee9ff;
+
+            color: #5135b8;
+
+            border-radius: 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+
+            font-weight: bold;
+        }
+
+        .profile-left h3 {
+            color: #292440;
+
+            font-size: 17px;
+
+            margin-bottom: 5px;
+        }
+
+        .profile-left p {
+            color: #898596;
+
+            font-size: 12px;
+        }
+
+        .profile-button {
+            text-decoration: none;
+
+            border: 1px solid #ddd7f2;
+
+            color: #5135b8;
+
+            padding: 10px 15px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .profile-button:hover {
+            background: #f0ecff;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #211c3b;
+
+            color: white;
+
+            padding: 42px 7% 25px;
+        }
+
+        .footer-content {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 23px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: #bcb8ca;
+
+            font-size: 14px;
+        }
+
+        .footer-right {
+            color: #bcb8ca;
+
+            font-size: 13px;
+
+            text-align: right;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            text-align: center;
+
+            color: #aaa6b9;
+
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .nav-links a:not(.dashboard-button) {
+                display: none;
+            }
+
+            .welcome {
+                padding: 30px;
+            }
+
+            .welcome-food {
+                font-size: 70px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 550px) {
+
+            .dashboard {
+                width: 92%;
+            }
+
+            .welcome {
+                padding: 28px 22px;
+            }
+
+            .welcome-text h1 {
+                font-size: 27px;
+            }
+
+            .welcome-food {
+                display: none;
+            }
+
+            .actions {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .profile-card {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .footer-right {
+                text-align: left;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🍽️
+            </div>
+
+            CampusBite
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="my-orders.html">
+                My Orders
+            </a>
+
+            <a href="dashboard.html" class="dashboard-button">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <main class="dashboard">
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome">
+
+            <div class="welcome-text">
+
+                <small>
+                    STUDENT DASHBOARD
+                </small>
+
+                <h1>
+                    Welcome back! 👋
+                </h1>
+
+                <p>
+                    Hungry? Order your favorite food from the
+                    college canteen and skip the waiting line.
+                    Everything you need is right here.
+                </p>
+
+            </div>
+
+
+            <div class="welcome-food">
+                🍔
+            </div>
+
+
+            <div class="circle-one"></div>
+            <div class="circle-two"></div>
+
+        </section>
+
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="section-title">
+
+            <h2>
+                Your Activity
+            </h2>
+
+        </div>
+
+
+        <section class="stats">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🛒
+                </div>
+
+                <div>
+
+                    <h3>
+                        12
+                    </h3>
+
+                    <p>
+                        Total Orders
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🍔
+                </div>
+
+                <div>
+
+                    <h3>
+                        24
+                    </h3>
+
+                    <p>
+                        Items Ordered
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <h3>
+                        ₹1,250
+                    </h3>
+
+                    <p>
+                        Total Spent
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= TWO COLUMN ================= -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- RECENT ORDER -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <h2>
+                        Recent Order
+                    </h2>
+
+                    <a href="my-orders.html">
+                        View All →
+                    </a>
+
+                </div>
+
+
+
+                <div class="recent-order">
+
+
+                    <div class="recent-top">
+
+                        <h3>
+                            Order #CB2026-1048
+                        </h3>
+
+                        <span>
+                            PREPARING
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="recent-food">
+
+                        <div class="recent-food-icon">
+                            🍔
+                        </div>
+
+                        <p>
+                            Veg Burger × 2<br>
+                            French Fries × 1
+                        </p>
+
+                        <div class="recent-total">
+                            ₹175
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="recent-order">
+
+
+                    <div class="recent-top">
+
+                        <h3>
+                            Order #CB2026-1032
+                        </h3>
+
+                        <span style="
+                            background:#e8f8ef;
+                            color:#238653;
+                        ">
+                            READY
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="recent-food">
+
+                        <div class="recent-food-icon">
+                            🍕
+                        </div>
+
+                        <p>
+                            Cheese Pizza × 1<br>
+                            Fresh Juice × 1
+                        </p>
+
+                        <div class="recent-total">
+                            ₹125
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- QUICK ACTIONS -->
+
+            <div class="panel">
+
+
+                <div class="panel-header">
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                </div>
+
+
+                <div class="actions">
+
+
+                    <a href="menu.html" class="action">
+
+                        <div class="action-icon">
+                            🍔
+                        </div>
+
+                        <h3>
+                            Order Food
+                        </h3>
+
+                        <p>
+                            Browse Menu
+                        </p>
+
+                    </a>
+
+
+
+                    <a href="cart.html" class="action">
+
+                        <div class="action-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            My Cart
+                        </h3>
+
+                        <p>
+                            View Cart
+                        </p>
+
+                    </a>
+
+
+
+                    <a href="my-orders.html" class="action">
+
+                        <div class="action-icon">
+                            📋
+                        </div>
+
+                        <h3>
+                            My Orders
+                        </h3>
+
+                        <p>
+                            Track Orders
+                        </p>
+
+                    </a>
+
+
+
+                    <a href="index.html" class="action">
+
+                        <div class="action-icon">
+                            🏠
+                        </div>
+
+                        <h3>
+                            Home
+                        </h3>
+
+                        <p>
+                            Go Home
+                        </p>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section class="profile-card">
+
+
+            <div class="profile-left">
+
+                <div class="avatar">
+                    TS
+                </div>
+
+                <div>
+
+                    <h3>
+                        Student Profile
+                    </h3>
+
+                    <p>
+                        Student • CSE • CampusBite Member
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <a href="#" class="profile-button">
+                View Profile
+            </a>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    🍽️ CampusBite
+                </div>
+
+                <div class="footer-text">
+                    Making Campus Food Ordering Simple.
+                </div>
+
+            </div>
+
+
+            <div class="footer-right">
+                Prototype UI – College Java Mini Project
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 CampusBite.
+            College Canteen Ordering System.
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusBite | Menu</title>
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- EVERYTHING IS IN THIS ONE FILE -->
+
+    <style>
+
+        /* =========================================
+           BASIC RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background: #f8f7fc;
+            color: #17152d;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+            width: 100%;
+            height: 76px;
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid #ebe8f2;
+
+            display: flex;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+
+        .navbar-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #17152d;
+
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 12px;
+
+            background: #5135b8;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .logo-purple {
+            color: #5135b8;
+        }
+
+
+        /* NAV LINKS */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+
+        .nav-links a {
+            color: #696579;
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #5135b8;
+        }
+
+
+        /* NAV RIGHT */
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .cart-button {
+            color: #5f5a6d;
+            font-size: 13px;
+            font-weight: 600;
+
+            padding: 10px 13px;
+
+            border-radius: 10px;
+
+            transition: 0.25s;
+        }
+
+
+        .cart-button:hover {
+            background: #eeeaff;
+            color: #5135b8;
+        }
+
+
+        .cart-number {
+            display: inline-flex;
+
+            width: 17px;
+            height: 17px;
+
+            margin-left: 4px;
+
+            border-radius: 50%;
+
+            background: #5135b8;
+            color: white;
+
+            font-size: 9px;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .student-button {
+            color: white;
+            background: #5135b8;
+
+            padding: 11px 17px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+
+        .student-button:hover {
+            background: #402b98;
+            color: white;
+        }
+
+
+        /* =========================================
+           MENU HEADER
+        ========================================= */
+
+        .menu-header {
+            padding: 70px 0 45px;
+
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    rgba(81, 53, 184, 0.13),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #f8f7fc
+                );
+        }
+
+
+        .menu-heading {
+            text-align: center;
+            max-width: 720px;
+            margin: auto;
+        }
+
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 9px 15px;
+
+            border-radius: 50px;
+
+            background: #eeeaff;
+            color: #5135b8;
+
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .menu-heading h1 {
+            font-size: clamp(38px, 5vw, 58px);
+            line-height: 1.08;
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+        }
+
+
+        .menu-heading h1 span {
+            color: #5135b8;
+        }
+
+
+        .menu-heading p {
+            max-width: 570px;
+
+            margin: 18px auto 0;
+
+            color: #7b758b;
+
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        .search-box {
+            width: min(590px, 100%);
+            height: 56px;
+
+            margin: 32px auto 0;
+
+            background: white;
+
+            border: 1px solid #e6e2ed;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 18px;
+
+            box-shadow:
+                0 10px 30px rgba(40, 30, 80, 0.06);
+        }
+
+
+        .search-box i {
+            color: #7d7590;
+            font-size: 17px;
+
+            margin-right: 12px;
+        }
+
+
+        .search-box input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+
+            color: #29243b;
+
+            font-size: 13px;
+        }
+
+
+        .search-box input::placeholder {
+            color: #aaa5b7;
+        }
+
+
+        /* =========================================
+           CATEGORY BUTTONS
+        ========================================= */
+
+        .categories {
+            display: flex;
+
+            justify-content: center;
+            flex-wrap: wrap;
+
+            gap: 9px;
+
+            margin-top: 23px;
+        }
+
+
+        .category {
+            border: 1px solid #e3dfeb;
+
+            background: white;
+
+            color: #686274;
+
+            padding: 10px 17px;
+
+            border-radius: 50px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+
+        .category:hover {
+            border-color: #5135b8;
+            color: #5135b8;
+        }
+
+
+        .category.active {
+            background: #5135b8;
+            border-color: #5135b8;
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(81, 53, 184, 0.2);
+        }
+
+
+        .category i {
+            margin-right: 5px;
+        }
+
+
+        /* =========================================
+           FOOD SECTION
+        ========================================= */
+
+        .food-section {
+            background: white;
+            padding: 60px 0 80px;
+        }
+
+
+        .section-top {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: flex-end;
+
+            margin-bottom: 30px;
+        }
+
+
+        .section-small {
+            color: #765dd1;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+        }
+
+
+        .section-top h2 {
+            margin-top: 6px;
+
+            font-size: 31px;
+            font-weight: 800;
+        }
+
+
+        .section-top h2 span {
+            color: #5135b8;
+        }
+
+
+        .item-count {
+            background: #eeeaff;
+            color: #5135b8;
+
+            padding: 10px 14px;
+
+            border-radius: 10px;
+
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           FOOD GRID
+        ========================================= */
+
+        .food-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 24px;
+        }
+
+
+        /* =========================================
+           FOOD CARD
+        ========================================= */
+
+        .food-card {
+            width: 100%;
+
+            background: white;
+
+            border: 1px solid #ebe8f1;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 7px 25px rgba(42, 31, 85, 0.05);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .food-card:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 18px 40px rgba(42, 31, 85, 0.12);
+        }
+
+
+        /* =========================================
+           ⭐ IMPORTANT IMAGE CONTAINER
+        ========================================= */
+
+        .food-image {
+            width: 100%;
+            height: 210px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #eeeaff;
+        }
+
+
+        .food-image img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            position: relative;
+
+            /* VERY IMPORTANT */
+
+            max-width: none;
+
+            max-height: none;
+        }
+
+
+        /* =========================================
+           FOOD LABELS
+        ========================================= */
+
+        .veg-label {
+            position: absolute;
+
+            top: 12px;
+            left: 12px;
+
+            z-index: 5;
+
+            background: white;
+
+            color: #464152;
+
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+            font-weight: 700;
+
+            box-shadow:
+                0 4px 15px rgba(0,0,0,0.1);
+        }
+
+
+        .veg-label i {
+            color: #28a96b;
+            font-size: 6px;
+
+            margin-right: 3px;
+        }
+
+
+        .popular-label {
+            position: absolute;
+
+            top: 12px;
+            right: 12px;
+
+            z-index: 5;
+
+            background: #5135b8;
+            color: white;
+
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           FOOD INFORMATION
+        ========================================= */
+
+        .food-info {
+            padding: 18px;
+        }
+
+
+        .food-info h3 {
+            font-size: 17px;
+            font-weight: 800;
+
+            margin-bottom: 7px;
+        }
+
+
+        .food-info p {
+            color: #858092;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            min-height: 38px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .food-bottom {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .price {
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+
+        .add-button {
+            border: none;
+
+            background: #eeeaff;
+
+            color: #5135b8;
+
+            padding: 9px 13px;
+
+            border-radius: 9px;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+
+        .add-button:hover {
+            background: #5135b8;
+            color: white;
+        }
+
+
+        /* =========================================
+           PICKUP BANNER
+        ========================================= */
+
+        .pickup {
+            background: white;
+
+            padding-bottom: 70px;
+        }
+
+
+        .pickup-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #5135b8,
+                    #765bd5
+                );
+
+            color: white;
+
+            border-radius: 20px;
+
+            padding: 25px 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 17px;
+
+            box-shadow:
+                0 15px 40px rgba(81,53,184,0.18);
+        }
+
+
+        .pickup-icon {
+            width: 50px;
+            height: 50px;
+
+            flex-shrink: 0;
+
+            background: rgba(255,255,255,0.15);
+
+            border-radius: 14px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+        }
+
+
+        .pickup-text h3 {
+            font-size: 16px;
+            font-weight: 800;
+
+            margin-bottom: 5px;
+        }
+
+
+        .pickup-text p {
+            margin: 0;
+
+            font-size: 11px;
+
+            opacity: 0.8;
+        }
+
+
+        .pickup-arrow {
+            margin-left: auto;
+
+            font-size: 22px;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+            background: #17152d;
+
+            color: white;
+
+            padding: 45px 0 20px;
+        }
+
+
+        .footer-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            color: white;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+
+        .footer-logo-icon {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 10px;
+
+            background: #5135b8;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .footer-logo span {
+            color: #9e8bea;
+        }
+
+
+        .footer-description {
+            color: #aaa6b8;
+
+            font-size: 11px;
+
+            margin-top: 9px;
+        }
+
+
+        .footer-links {
+            display: flex;
+            gap: 22px;
+        }
+
+
+        .footer-links a {
+            color: #aaa6b8;
+
+            font-size: 11px;
+
+            transition: 0.2s;
+        }
+
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+
+        .social {
+            display: flex;
+            gap: 8px;
+        }
+
+
+        .social a {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 9px;
+
+            background: #27233e;
+
+            color: #aaa6b8;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .social a:hover {
+            background: #5135b8;
+            color: white;
+        }
+
+
+        .footer-bottom {
+            border-top: 1px solid #302c46;
+
+            margin-top: 30px;
+
+            padding-top: 17px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #747086;
+
+            font-size: 10px;
+        }
+
+
+        /* =========================================
+           SEARCH NO RESULTS
+        ========================================= */
+
+        .no-results {
+            display: none;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+
+        .no-results-icon {
+            width: 60px;
+            height: 60px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #eeeaff;
+
+            color: #5135b8;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+        }
+
+
+        .no-results h3 {
+            margin-top: 15px;
+
+            font-size: 20px;
+        }
+
+
+        .no-results p {
+            color: #858092;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 1050px) {
+
+            .food-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .food-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+
+            .section-top {
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 560px) {
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+
+            .navbar {
+                height: 68px;
+            }
+
+
+            .nav-right {
+                display: none;
+            }
+
+
+            .menu-header {
+                padding: 50px 0 35px;
+            }
+
+
+            .menu-heading h1 {
+                letter-spacing: -1px;
+            }
+
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .food-image {
+                height: 230px;
+            }
+
+
+            .section-top {
+                display: block;
+            }
+
+
+            .item-count {
+                display: inline-block;
+
+                margin-top: 15px;
+            }
+
+
+            .pickup-box {
+                padding: 20px;
+            }
+
+
+            .pickup-arrow {
+                display: none;
+            }
+
+
+            .footer-top {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar">
+
+    <div class="navbar-inner">
+
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                <i class="bi bi-cup-hot-fill"></i>
+            </span>
+
+            Campus<span class="logo-purple">Bite</span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html" class="active">
+                Menu
+            </a>
+
+            <a href="#">
+                My Orders
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <a href="cart.html" class="cart-button">
+
+                <i class="bi bi-cart3"></i>
+
+                Cart
+
+                <span class="cart-number" id="cartNumber">
+                    0
+                </span>
+
+            </a>
+
+
+            <a href="#" class="student-button">
+
+                <i class="bi bi-person-circle"></i>
+
+                Student
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     MENU HEADER
+========================================= -->
+
+<section class="menu-header">
+
+    <div class="container">
+
+
+        <div class="menu-heading">
+
+
+            <div class="badge">
+
+                <i class="bi bi-stars"></i>
+
+                CAMPUSBITE MENU
+
+            </div>
+
+
+            <h1>
+
+                Delicious Food,
+
+                <span>
+                    Just a Click Away.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Explore your college canteen favorites,
+                choose what you like and order easily.
+
+            </p>
+
+
+        </div>
+
+
+
+        <!-- SEARCH -->
+
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search for food...">
+
+        </div>
+
+
+
+        <!-- CATEGORIES -->
+
+        <div class="categories">
+
+
+            <button
+                class="category active"
+                data-category="all">
+
+                <i class="bi bi-grid-fill"></i>
+
+                All
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="breakfast">
+
+                <i class="bi bi-egg-fried"></i>
+
+                Breakfast
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="snacks">
+
+                <i class="bi bi-basket-fill"></i>
+
+                Snacks
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="meals">
+
+                <i class="bi bi-cup-hot-fill"></i>
+
+                Meals
+
+            </button>
+
+
+            <button
+                class="category"
+                data-category="drinks">
+
+                <i class="bi bi-cup-straw"></i>
+
+                Drinks
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FOOD MENU
+========================================= -->
+
+<section class="food-section">
+
+    <div class="container">
+
+
+        <div class="section-top">
+
+
+            <div>
+
+                <div class="section-small">
+                    TODAY'S MENU
+                </div>
+
+
+                <h2>
+
+                    What are you
+
+                    <span>
+                        craving?
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            <div class="item-count">
+
+                <i class="bi bi-fire"></i>
+
+                <span id="itemCount">
+                    8 items available
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             FOOD GRID
+        ====================================== -->
+
+        <div class="food-grid" id="foodGrid">
+
+
+            <!-- FOOD 1 -->
+
+            <div
+                class="food-card food-item"
+                data-category="breakfast"
+                data-name="Masala Dosa">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=85"
+                        alt="Masala Dosa">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Masala Dosa
+                    </h3>
+
+
+                    <p>
+                        Crispy dosa with potato masala,
+                        chutney and sambar.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹50
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Masala Dosa')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 2 -->
+
+            <div
+                class="food-card food-item"
+                data-category="breakfast"
+                data-name="Idli Sambar">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=85"
+                        alt="Idli Sambar">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Idli Sambar
+                    </h3>
+
+
+                    <p>
+                        Soft steamed idlis served with
+                        hot sambar and chutney.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹35
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Idli Sambar')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 3 -->
+
+            <div
+                class="food-card food-item"
+                data-category="snacks"
+                data-name="Veg Burger">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=85"
+                        alt="Veg Burger">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+
+                    <span class="popular-label">
+
+                        <i class="bi bi-fire"></i>
+
+                        Popular
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Veg Burger
+                    </h3>
+
+
+                    <p>
+                        Crispy vegetable patty with fresh
+                        lettuce, tomato and sauce.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹50
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Veg Burger')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 4 -->
+
+            <div
+                class="food-card food-item"
+                data-category="snacks"
+                data-name="French Fries">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=800&q=85"
+                        alt="French Fries">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        French Fries
+                    </h3>
+
+
+                    <p>
+                        Golden crispy fries seasoned
+                        with delicious spices.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹40
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('French Fries')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 5 -->
+
+            <div
+                class="food-card food-item"
+                data-category="meals"
+                data-name="Veg Fried Rice">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=85"
+                        alt="Veg Fried Rice">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Veg Fried Rice
+                    </h3>
+
+
+                    <p>
+                        Flavourful fried rice tossed
+                        with fresh vegetables.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹80
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Veg Fried Rice')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 6 -->
+
+            <div
+                class="food-card food-item"
+                data-category="meals"
+                data-name="Veg Noodles">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=800&q=85"
+                        alt="Veg Noodles">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+
+                    <span class="popular-label">
+
+                        <i class="bi bi-fire"></i>
+
+                        Popular
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Veg Noodles
+                    </h3>
+
+
+                    <p>
+                        Stir-fried noodles loaded with
+                        colourful vegetables.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹70
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Veg Noodles')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 7 -->
+
+            <div
+                class="food-card food-item"
+                data-category="drinks"
+                data-name="Fresh Lime Soda">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=85"
+                        alt="Fresh Lime Soda">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Fresh Lime Soda
+                    </h3>
+
+
+                    <p>
+                        Refreshing lime drink perfect
+                        for a campus break.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹30
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Fresh Lime Soda')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOOD 8 -->
+
+            <div
+                class="food-card food-item"
+                data-category="drinks"
+                data-name="Cold Coffee">
+
+
+                <div class="food-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
+                        alt="Cold Coffee">
+
+
+                    <span class="veg-label">
+
+                        <i class="bi bi-circle-fill"></i>
+
+                        Veg
+
+                    </span>
+
+
+                    <span class="popular-label">
+
+                        <i class="bi bi-fire"></i>
+
+                        Popular
+
+                    </span>
+
+                </div>
+
+
+                <div class="food-info">
+
+                    <h3>
+                        Cold Coffee
+                    </h3>
+
+
+                    <p>
+                        Chilled creamy coffee for a
+                        refreshing campus break.
+                    </p>
+
+
+                    <div class="food-bottom">
+
+                        <span class="price">
+                            ₹45
+                        </span>
+
+
+                        <button
+                            class="add-button"
+                            onclick="addFood('Cold Coffee')">
+
+                            <i class="bi bi-plus-lg"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- NO RESULTS -->
+
+        <div id="noResults" class="no-results">
+
+            <div class="no-results-icon">
+
+                <i class="bi bi-search"></i>
+
+            </div>
+
+
+            <h3>
+                No food found
+            </h3>
+
+
+            <p>
+                Try searching for another food item.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PICKUP BANNER
+========================================= -->
+
+<section class="pickup">
+
+    <div class="container">
+
+        <div class="pickup-box">
+
+
+            <div class="pickup-icon">
+
+                <i class="bi bi-clock-history"></i>
+
+            </div>
+
+
+            <div class="pickup-text">
+
+                <h3>
+                    Quick Campus Pickup
+                </h3>
+
+                <p>
+                    Order before reaching the canteen
+                    and save your waiting time.
+                </p>
+
+            </div>
+
+
+            <i class="bi bi-arrow-right pickup-arrow"></i>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-top">
+
+
+            <div>
+
+                <a href="index.html" class="footer-logo">
+
+                    <span class="footer-logo-icon">
+                        <i class="bi bi-cup-hot-fill"></i>
+                    </span>
+
+                    Campus<span>Bite</span>
+
+                </a>
+
+
+                <p class="footer-description">
+                    Making campus food ordering simple.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+                <a href="#">
+                    My Orders
+                </a>
+
+                <a href="#">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="social">
+
+                <a href="#">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+                <a href="#">
+                    <i class="bi bi-envelope-fill"></i>
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 CampusBite
+            </span>
+
+            <span>
+                College Java Mini Project
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================= -->
+
+<script>
+    /* =========================================
+       CAMPUSBITE BACKEND + MENU
+    ========================================= */
+
+    const API_BASE_URL = "http://localhost:8080";
+    let menuItems = [];
+    let cart = JSON.parse(localStorage.getItem("campusCart") || "[]");
+
+    const foodCards = document.querySelectorAll(".food-item");
+    const categoryButtons = document.querySelectorAll(".category");
+    const searchInput = document.getElementById("searchInput");
+
+    function updateCartCount() {
+        const cartNumber = document.getElementById("cartNumber");
+        const totalQuantity = cart.reduce((total, item) => total + Number(item.quantity || 0), 0);
+        if (cartNumber) cartNumber.textContent = totalQuantity;
+    }
+
+    async function loadMenuFromBackend() {
+        try {
+            const response = await fetch(API_BASE_URL + "/api/menu");
+            if (!response.ok) throw new Error("Server returned " + response.status);
+
+            menuItems = await response.json();
+
+            foodCards.forEach(card => {
+                const foodName = card.dataset.name;
+                const backendFood = menuItems.find(item => item.name === foodName);
+                const priceElement = card.querySelector(".price");
+
+                if (backendFood && priceElement) {
+                    priceElement.textContent = "₹" + backendFood.price;
+                }
+            });
+
+            console.log("CampusBite menu loaded from Java backend.");
+        } catch (error) {
+            console.error("Could not connect to CampusBite backend. Showing the menu's saved prices.", error);
+        }
+    }
+
+    function addFood(foodName) {
+        const card = Array.from(foodCards).find(item => item.dataset.name === foodName);
+        const backendFood = menuItems.find(item => item.name === foodName);
+        const priceText = card ? card.querySelector(".price").textContent : "₹0";
+        const price = backendFood ? Number(backendFood.price) : Number(priceText.replace(/[^0-9.]/g, ""));
+
+        if (!card) {
+            alert("Food item not found. Please refresh the menu.");
+            return;
+        }
+
+        const existingItem = cart.find(item => item.name === foodName);
+        if (existingItem) {
+            existingItem.quantity = Number(existingItem.quantity || 0) + 1;
+        } else {
+            cart.push({ name: foodName, price: price, quantity: 1 });
+        }
+
+        localStorage.setItem("campusCart", JSON.stringify(cart));
+        updateCartCount();
+        alert(foodName + " added to cart!");
+    }
+
+    /* =========================================
+       CATEGORY FILTER + SEARCH
+    ========================================= */
+
+    let selectedCategory = "all";
+
+    function filterFoodItems() {
+        const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
+        let visibleCount = 0;
+
+        foodCards.forEach(card => {
+            const categoryMatches = selectedCategory === "all" || card.dataset.category === selectedCategory;
+            const nameMatches = card.dataset.name.toLowerCase().includes(searchText);
+            const isVisible = categoryMatches && nameMatches;
+
+            card.style.display = isVisible ? "block" : "none";
+            if (isVisible) visibleCount++;
+        });
+
+        updateItemCount(visibleCount);
+    }
+
+    categoryButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            categoryButtons.forEach(item => item.classList.remove("active"));
+            this.classList.add("active");
+            selectedCategory = this.dataset.category || "all";
+            filterFoodItems();
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener("input", filterFoodItems);
+    }
+
+    function updateItemCount(count) {
+        const countElement = document.getElementById("itemCount");
+        const noResults = document.getElementById("noResults");
+
+        if (countElement) {
+            countElement.textContent = count === 0
+                ? "0 items found"
+                : count + (count === 1 ? " item available" : " items available");
+        }
+
+        if (noResults) noResults.style.display = count === 0 ? "block" : "none";
+    }
+
+    updateCartCount();
+    filterFoodItems();
+    loadMenuFromBackend();
+</script>
+
+
+</body>
+
+</html>

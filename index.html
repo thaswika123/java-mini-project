@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusBite | College Canteen</title>
+
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           BASIC RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background: #f8f7fc;
+            color: #17152d;
+            overflow-x: hidden;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        button {
+            font-family: inherit;
+        }
+
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            width: 100%;
+            height: 76px;
+
+            background: rgba(255, 255, 255, 0.98);
+
+            border-bottom: 1px solid #ebe8f2;
+
+            display: flex;
+            align-items: center;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .navbar-inner {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            color: #17152d;
+
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 12px;
+
+            background: #5135b8;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+
+        .logo-purple {
+            color: #5135b8;
+        }
+
+
+        /* NAVIGATION */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+
+            gap: 32px;
+        }
+
+
+        .nav-links a {
+            color: #696579;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #5135b8;
+        }
+
+
+        /* RIGHT SIDE */
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .cart-button {
+            color: #5f5a6d;
+
+            padding: 10px 13px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            transition: 0.25s;
+        }
+
+
+        .cart-button:hover {
+            background: #eeeaff;
+            color: #5135b8;
+        }
+
+
+        .student-button {
+            color: white;
+
+            background: #5135b8;
+
+            padding: 11px 17px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+
+        .student-button:hover {
+            background: #402b98;
+            color: white;
+        }
+
+
+
+        /* =====================================================
+           HERO SECTION
+        ===================================================== */
+
+        .hero {
+            position: relative;
+
+            min-height: 625px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 25%,
+                    rgba(81, 53, 184, 0.13),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #f8f7fc
+                );
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        /* Background circle */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background: #eeeaff;
+
+            right: -170px;
+            top: -130px;
+
+            opacity: 0.7;
+        }
+
+
+        .hero-inner {
+            position: relative;
+
+            z-index: 2;
+
+            display: grid;
+
+            grid-template-columns:
+                0.95fr 1.05fr;
+
+            align-items: center;
+
+            gap: 45px;
+        }
+
+
+
+        /* =====================================================
+           HERO LEFT CONTENT
+        ===================================================== */
+
+        .hero-content {
+            padding: 55px 0;
+        }
+
+
+        .hero-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 9px 15px;
+
+            border-radius: 50px;
+
+            background: #eeeaff;
+
+            color: #5135b8;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .hero-badge i {
+            font-size: 12px;
+        }
+
+
+        .hero-content h1 {
+            max-width: 610px;
+
+            font-size: clamp(45px, 5.5vw, 70px);
+
+            line-height: 1.03;
+
+            letter-spacing: -3px;
+
+            font-weight: 800;
+        }
+
+
+        .hero-content h1 span {
+            color: #5135b8;
+        }
+
+
+        .hero-description {
+            max-width: 500px;
+
+            margin-top: 22px;
+
+            color: #777184;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+        }
+
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+        }
+
+
+        .primary-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            border: none;
+
+            background: #5135b8;
+
+            color: white;
+
+            padding: 14px 21px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(81, 53, 184, 0.2);
+
+            transition: 0.25s;
+        }
+
+
+        .primary-button:hover {
+            background: #402b98;
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        .secondary-button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            border: 1px solid #dfdbe8;
+
+            background: white;
+
+            color: #575264;
+
+            padding: 13px 19px;
+
+            border-radius: 11px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+
+        .secondary-button:hover {
+            border-color: #5135b8;
+
+            color: #5135b8;
+
+            transform: translateY(-2px);
+        }
+
+
+
+        /* =====================================================
+           TRUST POINTS
+        ===================================================== */
+
+        .trust-points {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 22px;
+
+            margin-top: 32px;
+        }
+
+
+        .trust-point {
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #777184;
+
+            font-size: 10px;
+
+            font-weight: 600;
+        }
+
+
+        .trust-point i {
+            color: #28a96b;
+
+            font-size: 13px;
+        }
+
+
+
+        /* =====================================================
+           HERO RIGHT VISUAL
+        ===================================================== */
+
+        .hero-visual {
+            position: relative;
+
+            height: 510px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Purple circle behind images */
+
+        .visual-circle {
+            position: absolute;
+
+            width: 420px;
+            height: 420px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #eeeaff,
+                    #e2dcfa
+                );
+
+            z-index: 1;
+        }
+
+
+
+        /* =====================================================
+           MAIN FOOD IMAGE
+        ===================================================== */
+
+        .main-food-card {
+            position: relative;
+
+            z-index: 3;
+
+            width: 365px;
+            height: 395px;
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 7px solid white;
+
+            box-shadow:
+                0 25px 55px rgba(40, 30, 80, 0.17);
+
+            transform: rotate(-2deg);
+        }
+
+
+        .main-food-card img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            max-width: none;
+            max-height: none;
+        }
+
+
+
+        /* =====================================================
+           FLOATING FOOD IMAGE 1
+        ===================================================== */
+
+        .floating-food {
+            position: absolute;
+
+            z-index: 5;
+
+            width: 125px;
+            height: 125px;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            background: white;
+
+            border: 5px solid white;
+
+            box-shadow:
+                0 15px 35px rgba(30, 20, 70, 0.18);
+        }
+
+
+        .floating-food img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            max-width: none;
+            max-height: none;
+        }
+
+
+        .food-one {
+            top: 45px;
+            right: 18px;
+
+            transform: rotate(6deg);
+        }
+
+
+        .food-two {
+            bottom: 38px;
+            left: 20px;
+
+            transform: rotate(-7deg);
+        }
+
+
+
+        /* =====================================================
+           FLOATING ORDER CARDS
+        ===================================================== */
+
+        .order-card {
+            position: absolute;
+
+            z-index: 10;
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 13px 15px;
+
+            box-shadow:
+                0 15px 35px rgba(40, 30, 80, 0.13);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            animation: floating 4s ease-in-out infinite;
+        }
+
+
+        .order-icon {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 10px;
+
+            background: #eeeaff;
+
+            color: #5135b8;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 15px;
+        }
+
+
+        .order-text strong {
+            display: block;
+
+            color: #28233a;
+
+            font-size: 10px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .order-text small {
+            color: #8b8697;
+
+            font-size: 8px;
+        }
+
+
+        .order-ready {
+            top: 78px;
+            left: 5px;
+        }
+
+
+        .order-placed {
+            bottom: 85px;
+            right: 0;
+
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes floating {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+
+        /* =====================================================
+           DECORATIVE DOTS
+        ===================================================== */
+
+        .dot {
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #5135b8;
+
+            z-index: 4;
+        }
+
+
+        .dot-one {
+            top: 35px;
+            left: 100px;
+        }
+
+
+        .dot-two {
+            bottom: 35px;
+            right: 100px;
+
+            background: #f59e0b;
+        }
+
+
+        .dot-three {
+            top: 145px;
+            right: 0;
+
+            width: 5px;
+            height: 5px;
+
+            background: #28a96b;
+        }
+
+
+
+        /* =====================================================
+           WHY CAMPUSBITE
+        ===================================================== */
+
+        .benefits {
+            background: white;
+
+            padding: 85px 0;
+        }
+
+
+        .section-heading {
+            text-align: center;
+
+            max-width: 620px;
+
+            margin: auto;
+        }
+
+
+        .section-label {
+            color: #765dd1;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.7px;
+        }
+
+
+        .section-heading h2 {
+            margin-top: 8px;
+
+            font-size: 34px;
+
+            font-weight: 800;
+
+            letter-spacing: -1px;
+        }
+
+
+        .section-heading h2 span {
+            color: #5135b8;
+        }
+
+
+        .section-heading p {
+            color: #858092;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            margin-top: 12px;
+        }
+
+
+
+        /* =====================================================
+           BENEFIT CARDS
+        ===================================================== */
+
+        .benefit-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 24px;
+
+            margin-top: 45px;
+        }
+
+
+        .benefit-card {
+            position: relative;
+
+            background: #faf9fd;
+
+            border: 1px solid #ece9f3;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            transition: 0.3s;
+        }
+
+
+        .benefit-card:hover {
+            transform: translateY(-7px);
+
+            background: white;
+
+            box-shadow:
+                0 18px 40px rgba(40, 30, 80, 0.08);
+        }
+
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+
+            border-radius: 14px;
+
+            background: #eeeaff;
+
+            color: #5135b8;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .benefit-card h3 {
+            font-size: 16px;
+
+            font-weight: 800;
+
+            margin-bottom: 9px;
+        }
+
+
+        .benefit-card p {
+            color: #858092;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        .benefit-arrow {
+            position: absolute;
+
+            top: 30px;
+            right: 28px;
+
+            color: #b2adbe;
+
+            font-size: 17px;
+        }
+
+
+
+        /* =====================================================
+           CTA SECTION
+        ===================================================== */
+
+        .cta-section {
+            background: white;
+
+            padding: 0 0 85px;
+        }
+
+
+        .cta-box {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #5135b8,
+                    #765bd5
+                );
+
+            border-radius: 25px;
+
+            padding: 48px;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            box-shadow:
+                0 20px 45px rgba(81, 53, 184, 0.2);
+        }
+
+
+        .cta-box::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            border: 45px solid rgba(255,255,255,0.08);
+
+            right: -80px;
+            top: -100px;
+        }
+
+
+        .cta-content {
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .cta-content h2 {
+            font-size: 27px;
+
+            font-weight: 800;
+
+            margin-bottom: 8px;
+        }
+
+
+        .cta-content p {
+            color: rgba(255,255,255,0.75);
+
+            font-size: 11px;
+        }
+
+
+        .cta-button {
+            position: relative;
+
+            z-index: 3;
+
+            flex-shrink: 0;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            border: none;
+
+            background: white;
+
+            color: #5135b8;
+
+            padding: 14px 20px;
+
+            border-radius: 11px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            transition: 0.25s;
+        }
+
+
+        .cta-button:hover {
+            color: #5135b8;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.15);
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+            background: #17152d;
+
+            color: white;
+
+            padding: 45px 0 20px;
+        }
+
+
+        .footer-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: white;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+
+        .footer-logo-icon {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 10px;
+
+            background: #5135b8;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .footer-logo span {
+            color: #9e8bea;
+        }
+
+
+        .footer-description {
+            color: #aaa6b8;
+
+            font-size: 11px;
+
+            margin-top: 9px;
+        }
+
+
+        .footer-links {
+            display: flex;
+
+            gap: 22px;
+        }
+
+
+        .footer-links a {
+            color: #aaa6b8;
+
+            font-size: 11px;
+
+            transition: 0.2s;
+        }
+
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+
+        .social {
+            display: flex;
+
+            gap: 8px;
+        }
+
+
+        .social a {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 9px;
+
+            background: #27233e;
+
+            color: #aaa6b8;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+
+        .social a:hover {
+            background: #5135b8;
+
+            color: white;
+        }
+
+
+        .footer-bottom {
+            border-top: 1px solid #302c46;
+
+            margin-top: 30px;
+
+            padding-top: 17px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #747086;
+
+            font-size: 10px;
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVE DESIGN
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                gap: 10px;
+            }
+
+
+            .hero-content {
+                padding-bottom: 10px;
+            }
+
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+
+            .trust-points {
+                justify-content: center;
+            }
+
+
+            .hero-visual {
+                height: 500px;
+            }
+
+        }
+
+
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .cta-box {
+                padding: 35px;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+        }
+
+
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: min(100% - 28px, 1180px);
+            }
+
+
+            .navbar {
+                height: 68px;
+            }
+
+
+            .nav-right {
+                display: none;
+            }
+
+
+            .hero {
+                min-height: auto;
+            }
+
+
+            .hero-content {
+                padding-top: 55px;
+            }
+
+
+            .hero-content h1 {
+                font-size: 43px;
+
+                letter-spacing: -2px;
+            }
+
+
+            .hero-visual {
+                height: 430px;
+
+                margin-top: 10px;
+            }
+
+
+            .visual-circle {
+                width: 320px;
+                height: 320px;
+            }
+
+
+            .main-food-card {
+                width: 285px;
+                height: 320px;
+            }
+
+
+            .floating-food {
+                width: 95px;
+                height: 95px;
+            }
+
+
+            .food-one {
+                right: 0;
+                top: 35px;
+            }
+
+
+            .food-two {
+                left: 0;
+                bottom: 30px;
+            }
+
+
+            .order-ready {
+                left: 0;
+                top: 65px;
+            }
+
+
+            .order-placed {
+                right: 0;
+                bottom: 65px;
+            }
+
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+
+            .footer-top {
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .footer-bottom {
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <div class="navbar-inner">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+
+            <span class="logo-icon">
+                <i class="bi bi-cup-hot-fill"></i>
+            </span>
+
+            Campus<span class="logo-purple">Bite</span>
+
+        </a>
+
+
+
+        <!-- NAVIGATION -->
+
+        <div class="nav-links">
+
+            <a href="index.html" class="active">
+                Home
+            </a>
+
+
+            <!-- THIS CONNECTS TO YOUR MENU PAGE -->
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+
+            <a href="my-orders.html">
+                My Orders
+            </a>
+
+
+            <a href="about.html">
+                About
+            </a>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <div class="nav-right">
+
+            <a href="cart.html" class="cart-button">
+
+                <i class="bi bi-cart3"></i>
+
+                Cart
+
+            </a>
+
+
+            <a href="dashboard.html" class="student-button">
+
+                <i class="bi bi-person-circle"></i>
+
+                Student
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="container hero-inner">
+
+
+        <!-- =================================================
+             LEFT SIDE
+        ================================================= -->
+
+        <div class="hero-content">
+
+
+            <div class="hero-badge">
+
+                <i class="bi bi-stars"></i>
+
+                COLLEGE CANTEEN • SMART ORDERING
+
+            </div>
+
+
+
+            <h1>
+
+                Good Food.
+
+                <br>
+
+                <span>
+                    Less Waiting.
+                </span>
+
+            </h1>
+
+
+
+            <p class="hero-description">
+
+                Order your favorite college canteen food
+                online and collect it when it's ready.
+                CampusBite makes campus food ordering
+                simple, quick and convenient.
+
+            </p>
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="hero-buttons">
+
+
+                <!-- IMPORTANT:
+                     THIS BUTTON OPENS MENU PAGE -->
+
+                <a
+                    href="menu.html"
+                    class="primary-button">
+
+                    Browse Menu
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+
+                <a
+                    href="menu.html"
+                    class="secondary-button">
+
+                    <i class="bi bi-grid"></i>
+
+                    View Menu
+
+                </a>
+
+            </div>
+
+
+
+            <!-- TRUST POINTS -->
+
+            <div class="trust-points">
+
+
+                <div class="trust-point">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Easy Ordering
+
+                </div>
+
+
+                <div class="trust-point">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Quick Pickup
+
+                </div>
+
+
+                <div class="trust-point">
+
+                    <i class="bi bi-check-circle-fill"></i>
+
+                    Simple Billing
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT SIDE VISUAL
+        ================================================= -->
+
+        <div class="hero-visual">
+
+
+            <!-- BACKGROUND CIRCLE -->
+
+            <div class="visual-circle"></div>
+
+
+
+            <!-- DECORATIVE DOTS -->
+
+            <span class="dot dot-one"></span>
+
+            <span class="dot dot-two"></span>
+
+            <span class="dot dot-three"></span>
+
+
+
+            <!-- =================================================
+                 MAIN IMAGE
+
+                 FIXED CONTAINER
+                 SO IMAGE CANNOT OVERLAP
+            ================================================= -->
+
+            <div class="main-food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=85"
+                    alt="Delicious Campus Food">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SMALL IMAGE 1
+            ================================================= -->
+
+            <div class="floating-food food-one">
+
+                <img
+                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=500&q=85"
+                    alt="French Fries">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SMALL IMAGE 2
+            ================================================= -->
+
+            <div class="floating-food food-two">
+
+                <img
+                    src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=85"
+                    alt="Cold Coffee">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ORDER CARD 1
+            ================================================= -->
+
+            <div class="order-card order-ready">
+
+
+                <div class="order-icon">
+
+                    <i class="bi bi-check-lg"></i>
+
+                </div>
+
+
+                <div class="order-text">
+
+                    <strong>
+                        Order Ready!
+                    </strong>
+
+                    <small>
+                        Veg Burger × 2
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ORDER CARD 2
+            ================================================= -->
+
+            <div class="order-card order-placed">
+
+
+                <div class="order-icon">
+
+                    <i class="bi bi-bag-check-fill"></i>
+
+                </div>
+
+
+                <div class="order-text">
+
+                    <strong>
+                        Order Placed
+                    </strong>
+
+                    <small>
+                        Preparing your food
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     WHY CAMPUSBITE
+===================================================== -->
+
+<section class="benefits" id="about">
+
+    <div class="container">
+
+
+        <!-- HEADING -->
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                WHY CAMPUSBITE?
+            </div>
+
+
+            <h2>
+
+                Everything you need for
+
+                <span>
+                    easy ordering.
+                </span>
+
+            </h2>
+
+
+            <p>
+
+                Designed for students who want good food
+                without standing in long canteen queues.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- CARDS -->
+
+        <div class="benefit-grid">
+
+
+            <!-- CARD 1 -->
+
+            <div class="benefit-card">
+
+
+                <div class="benefit-icon">
+
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right benefit-arrow"></i>
+
+
+                <h3>
+                    Browse Easily
+                </h3>
+
+
+                <p>
+
+                    Explore your college canteen menu
+                    and quickly find your favorite food.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 2 -->
+
+            <div class="benefit-card">
+
+
+                <div class="benefit-icon">
+
+                    <i class="bi bi-lightning-charge-fill"></i>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right benefit-arrow"></i>
+
+
+                <h3>
+                    Order Quickly
+                </h3>
+
+
+                <p>
+
+                    Select your food, choose quantities
+                    and place your order with ease.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- CARD 3 -->
+
+            <div class="benefit-card">
+
+
+                <div class="benefit-icon">
+
+                    <i class="bi bi-clock-fill"></i>
+
+                </div>
+
+
+                <i class="bi bi-arrow-up-right benefit-arrow"></i>
+
+
+                <h3>
+                    Save Your Time
+                </h3>
+
+
+                <p>
+
+                    Order before reaching the canteen
+                    and spend less time waiting.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+
+        <div class="cta-box">
+
+
+            <div class="cta-content">
+
+
+                <h2>
+                    Hungry? Your food is just a few clicks away.
+                </h2>
+
+
+                <p>
+                    Browse the campus menu and place your order easily.
+                </p>
+
+
+            </div>
+
+
+
+            <!-- CONNECTS TO MENU -->
+
+            <a
+                href="menu.html"
+                class="cta-button">
+
+                Explore Menu
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container">
+
+
+        <div class="footer-top">
+
+
+            <!-- LOGO -->
+
+            <div>
+
+                <a
+                    href="index.html"
+                    class="footer-logo">
+
+                    <span class="footer-logo-icon">
+
+                        <i class="bi bi-cup-hot-fill"></i>
+
+                    </span>
+
+                    Campus<span>Bite</span>
+
+                </a>
+
+
+                <p class="footer-description">
+
+                    Making campus food ordering simple.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- LINKS -->
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+
+                <a href="menu.html">
+                    Menu
+                </a>
+
+
+                <a href="my-orders.html">
+                    My Orders
+                </a>
+
+
+                <a href="about.html">
+                    About
+                </a>
+
+            </div>
+
+
+
+            <!-- SOCIAL -->
+
+            <div class="social">
+
+                <a href="#">
+                    <i class="bi bi-instagram"></i>
+                </a>
+
+
+                <a href="#">
+                    <i class="bi bi-facebook"></i>
+                </a>
+
+
+                <a href="#">
+                    <i class="bi bi-envelope-fill"></i>
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 CampusBite
+            </span>
+
+
+            <span>
+                College Java Mini Project
+            </span>
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+</body>
+
+</html>

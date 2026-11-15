@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CampusBite | My Orders</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f7f5fc;
+            color: #24213a;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            width: 100%;
+            background: white;
+            padding: 18px 7%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            box-shadow: 0 2px 15px rgba(40, 25, 80, 0.08);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 25px;
+            font-weight: bold;
+            color: #5135b8;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+
+            background: #eee9ff;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #55516b;
+
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #5135b8;
+        }
+
+        .orders-button {
+            background: #5135b8;
+            color: white !important;
+
+            padding: 11px 18px;
+            border-radius: 12px;
+        }
+
+        /* ================= PAGE HEADER ================= */
+
+        .page-header {
+            text-align: center;
+
+            padding: 55px 7% 35px;
+        }
+
+        .small-title {
+            color: #5135b8;
+
+            font-size: 13px;
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 {
+            font-size: 42px;
+            color: #211c3b;
+
+            margin-bottom: 12px;
+        }
+
+        .page-header h1 span {
+            color: #5135b8;
+        }
+
+        .page-header p {
+            color: #77738b;
+            font-size: 16px;
+        }
+
+        /* ================= MAIN ================= */
+
+        .orders-container {
+            width: 86%;
+            max-width: 1050px;
+
+            margin: 10px auto 70px;
+        }
+
+        /* ================= ORDER CARD ================= */
+
+        .order-card {
+            background: white;
+
+            border-radius: 22px;
+
+            padding: 25px 28px;
+
+            margin-bottom: 22px;
+
+            box-shadow:
+                0 12px 35px rgba(50, 30, 100, 0.07);
+        }
+
+        /* ================= ORDER TOP ================= */
+
+        .order-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #eeeaf5;
+        }
+
+        .order-id h2 {
+            font-size: 19px;
+            color: #292440;
+
+            margin-bottom: 6px;
+        }
+
+        .order-id p {
+            font-size: 12px;
+            color: #898596;
+        }
+
+        /* STATUS */
+
+        .status {
+            padding: 8px 14px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .preparing {
+            background: #fff4dc;
+            color: #b97800;
+        }
+
+        .ready {
+            background: #e8f8ef;
+            color: #238653;
+        }
+
+        .completed {
+            background: #eee9ff;
+            color: #5135b8;
+        }
+
+        /* ================= ORDER BODY ================= */
+
+        .order-body {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            padding-top: 22px;
+        }
+
+        .food-list {
+            flex: 1;
+        }
+
+        .food-row {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin-bottom: 14px;
+        }
+
+        .food-icon {
+            width: 48px;
+            height: 48px;
+
+            background: #f1edff;
+
+            border-radius: 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .food-info h3 {
+            font-size: 15px;
+            color: #302b46;
+
+            margin-bottom: 4px;
+        }
+
+        .food-info p {
+            color: #898596;
+            font-size: 12px;
+        }
+
+        /* ================= PRICE ================= */
+
+        .order-price {
+            min-width: 150px;
+
+            text-align: right;
+        }
+
+        .order-price p {
+            color: #898596;
+
+            font-size: 12px;
+
+            margin-bottom: 6px;
+        }
+
+        .order-price h2 {
+            color: #5135b8;
+
+            font-size: 23px;
+        }
+
+        /* ================= BOTTOM ================= */
+
+        .order-bottom {
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #eeeaf5;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pickup {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #77738b;
+
+            font-size: 13px;
+        }
+
+        .view-button {
+            text-decoration: none;
+
+            border: 1px solid #dcd6f1;
+
+            color: #5135b8;
+
+            padding: 9px 15px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .view-button:hover {
+            background: #f0ecff;
+        }
+
+        /* ================= EMPTY STYLE ================= */
+
+        .orders-note {
+            background: #f0ecff;
+
+            border-radius: 18px;
+
+            padding: 20px;
+
+            margin-top: 30px;
+
+            text-align: center;
+
+            color: #625d76;
+
+            font-size: 13px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #211c3b;
+
+            color: white;
+
+            padding: 42px 7% 25px;
+        }
+
+        .footer-content {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 23px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        .footer-text {
+            color: #bcb8ca;
+
+            font-size: 14px;
+        }
+
+        .footer-right {
+            color: #bcb8ca;
+
+            font-size: 13px;
+
+            text-align: right;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            text-align: center;
+
+            color: #aaa6b9;
+
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .nav-links a:not(.orders-button) {
+                display: none;
+            }
+
+            .page-header {
+                padding: 40px 5% 25px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .orders-container {
+                width: 92%;
+            }
+
+            .order-card {
+                padding: 20px;
+            }
+
+            .order-top {
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .order-body {
+                flex-direction: column;
+            }
+
+            .order-price {
+                text-align: left;
+            }
+
+            .order-bottom {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+            .footer-right {
+                text-align: left;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🍽️
+            </div>
+
+            CampusBite
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="menu.html">
+                Menu
+            </a>
+
+            <a href="cart.html">
+                Cart
+            </a>
+
+            <a href="my-orders.html" class="orders-button">
+                My Orders
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+
+        <div class="small-title">
+            ORDER HISTORY
+        </div>
+
+        <h1>
+            My <span>Orders</span>
+        </h1>
+
+        <p>
+            Track your current orders and view your previous orders.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= ORDERS ================= -->
+
+    <main class="orders-container">
+
+
+        <!-- ================= ORDER 1 ================= -->
+
+        <div class="order-card">
+
+
+            <div class="order-top">
+
+                <div class="order-id">
+
+                    <h2>
+                        Order #CB2026-1048
+                    </h2>
+
+                    <p>
+                        Today • 10:35 AM
+                    </p>
+
+                </div>
+
+
+                <div class="status preparing">
+                    🍳 PREPARING
+                </div>
+
+            </div>
+
+
+
+            <div class="order-body">
+
+
+                <div class="food-list">
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🍔
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Veg Burger × 2
+                            </h3>
+
+                            <p>
+                                Fresh vegetable burger
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🍟
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                French Fries × 1
+                            </h3>
+
+                            <p>
+                                Crispy golden fries
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🥤
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Cold Drink × 1
+                            </h3>
+
+                            <p>
+                                Chilled refreshing drink
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-price">
+
+                    <p>
+                        Total Amount
+                    </p>
+
+                    <h2>
+                        ₹175
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="order-bottom">
+
+                <div class="pickup">
+                    📍 College Canteen • Preparing your food
+                </div>
+
+                <a href="order-success.html" class="view-button">
+                    View Order
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= ORDER 2 ================= -->
+
+        <div class="order-card">
+
+
+            <div class="order-top">
+
+                <div class="order-id">
+
+                    <h2>
+                        Order #CB2026-1032
+                    </h2>
+
+                    <p>
+                        Yesterday • 1:15 PM
+                    </p>
+
+                </div>
+
+
+                <div class="status ready">
+                    ✓ READY
+                </div>
+
+            </div>
+
+
+
+            <div class="order-body">
+
+
+                <div class="food-list">
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🍕
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Cheese Pizza × 1
+                            </h3>
+
+                            <p>
+                                Cheesy vegetable pizza
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🥤
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Fresh Juice × 1
+                            </h3>
+
+                            <p>
+                                Chilled fruit juice
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-price">
+
+                    <p>
+                        Total Amount
+                    </p>
+
+                    <h2>
+                        ₹125
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="order-bottom">
+
+                <div class="pickup">
+                    📍 College Canteen • Ready for pickup
+                </div>
+
+                <a href="order-success.html" class="view-button">
+                    View Order
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= ORDER 3 ================= -->
+
+        <div class="order-card">
+
+
+            <div class="order-top">
+
+                <div class="order-id">
+
+                    <h2>
+                        Order #CB2026-0998
+                    </h2>
+
+                    <p>
+                        24 September • 12:40 PM
+                    </p>
+
+                </div>
+
+
+                <div class="status completed">
+                    ✓ COMPLETED
+                </div>
+
+            </div>
+
+
+
+            <div class="order-body">
+
+
+                <div class="food-list">
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🍜
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Veg Noodles × 1
+                            </h3>
+
+                            <p>
+                                Spicy vegetable noodles
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="food-row">
+
+                        <div class="food-icon">
+                            🥪
+                        </div>
+
+                        <div class="food-info">
+
+                            <h3>
+                                Grilled Sandwich × 1
+                            </h3>
+
+                            <p>
+                                Grilled vegetable sandwich
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="order-price">
+
+                    <p>
+                        Total Amount
+                    </p>
+
+                    <h2>
+                        ₹110
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="order-bottom">
+
+                <div class="pickup">
+                    ✓ Order collected successfully
+                </div>
+
+                <a href="order-success.html" class="view-button">
+                    View Order
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================= NOTE ================= -->
+
+        <div class="orders-note">
+
+            💜 Your recent orders will appear here.
+            Once the Java backend and database are connected,
+            this page can automatically display the student's real order history.
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    🍽️ CampusBite
+                </div>
+
+                <div class="footer-text">
+                    Making Campus Food Ordering Simple.
+                </div>
+
+            </div>
+
+
+            <div class="footer-right">
+                Prototype UI – College Java Mini Project
+            </div>
+
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 CampusBite.
+            College Canteen Ordering System.
+
+        </div>
+
+
+    </footer>
+
+
+</body>
+
+</html>
